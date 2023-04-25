@@ -378,7 +378,8 @@
       function xuanRanList() {
         $.ajax({
           type: "get",
-          url: "https://mp3.zzgoodqc.cn/api/songs",
+          // https://mp3.zzgoodqc.cn/api/songs
+          url: `https://mp3.zzgoodqc.cn/api/songs`,
           dataType: "json",
           data: {
             page: 1,
