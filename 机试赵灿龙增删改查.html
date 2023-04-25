@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      body.colorU {
+        background-color: rgb(255, 255, 255);
+      }
+      body.colorX {
+        background-color: gray;
+      }
+      body.colorY {
+        background-color: rgb(0, 0, 0);
+      }
+      #Ly {
+        position: relative;
+        top: 3px;
+        left: -3px;
+      }
+      .quehuan {
+        width: 60px;
+        height: 30px;
+        border-radius: 4px;
+        background-color: rgb(247, 244, 239);
+      }
+    </style>
+    <title>Document</title>
+    <script src="./jquery.js"></script>
+    <link rel="stylesheet" href="./layui.css" />
+    <script src="./layui.js"></script>
+    <style>
+      #box {
+        position: relative;
+        top: 20px;
+        left: 30px;
+        width: 1300px;
+        background-color: rgba(255, 255, 255, 0.4);
+      }
+      table {
+        text-align: center;
+        width: 1300px;
+        height: 50px;
+        border: 1px solid rgb(233, 233, 233);
+      }
+      th {
+        padding: 10px;
+        background-color: rgb(214, 214, 214);
+      }
+
+      td {
+        padding: 10px;
+      }
+      tbody tr:hover {
+        background-color: rgb(255, 244, 230);
+      }
+      .xxx {
+        margin-left: 5px;
+        height: 27px;
+        border: 1px solid rgb(219, 219, 219);
+      }
+      #souSuo {
+        margin: 7px;
+        padding: 5px;
+        border: none;
+        color: white;
+        background-color: rgb(5, 186, 11);
+        border-radius: 2px;
+      }
+      #tianjia {
+        position: absolute;
+        top: 7px;
+        right: 18px;
+        width: 67px;
+        height: 28px;
+        border: none;
+        color: white;
+        background-color: rgb(5, 186, 11);
+        border-radius: 2px;
+      }
+      .chakan {
+        width: 43px;
+        height: 23px;
+        border: none;
+        color: white;
+        background-color: rgb(61, 201, 216);
+        border-radius: 4px;
+      }
+      .bianji {
+        width: 43px;
+        height: 23px;
+        border: none;
+        color: white;
+        background-color: rgb(61, 201, 216);
+        border-radius: 4px;
+      }
+      .zhuxiao {
+        width: 43px;
+        height: 23px;
+        border: none;
+        color: white;
+        background-color: rgb(247, 179, 63);
+        border-radius: 4px;
+      }
+      form {
+        position: absolute;
+        top: 150px;
+        left: 420px;
+        width: 280px;
+        height: 250px;
+        text-align: center;
+        line-height: 30px;
+        border: 1px solid black;
+        background: #0000;
+        border-radius: 15px;
+        border: none;
+        background-color: antiquewhite;
+        display: none;
+        padding-top: 20px;
+      }
+      #queding {
+        width: 70px;
+        height: 35px;
+        border-radius: 5px;
+        border: none;
+        background-color: white;
+        color: rgb(239, 171, 0);
+      }
+      #queding:hover {
+        background-color: rgb(239, 171, 0);
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="box">
+      <i
+        class="layui-icon layui-icon-light"
+        id="Ly"
+        style="font-size: 25px; color: #ff8f8f"
+      ></i>
+      <select id="bg-color-select" class="quehuan">
+        <option value="colorU">白色</option>
+        <option value="colorX">灰色</option>
+        <option value="colorY">黑色</option>
+      </select>
+      <input class="xxx" type="text" /><button id="souSuo">搜索</button>
+      <input type="submit" onclick="tianjiaFun()" id="tianjia" value="添加" />
+      <table border="1" style="border-collapse: collapse">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>名称</th>
+            <th>艺术家</th>
+            <th>专辑</th>
+            <th>年份</th>
+            <th>类型</th>
+            <th>长度</th>
+            <th>创建日期</th>
+            <th>更新日期</th>
+            <th>图像</th>
+            <th>操作</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+      <form id="chakanfUN">
+        <h1>添加歌曲表单</h1>
+        名称:<input type="text" id="title" /><br />
+        艺术:<input type="text" id="artist" /><br />
+        专辑:<input type="text" id="album" /><br />
+        年份:<input type="text" id="year" /><br />
+        类型:<input type="text" id="genre" /><br />
+        <input type="submit" class="tianjiaClass" id="queding" value="确定" />
+        <input type="submit" id="queding" value="取消" />
+      </form>
+    </div>
+    <script>
+      (function () {
+        xuanRanList();
+      })();
+      function tianjiaFun() {
+        event.preventDefault();
+        $("form").css("display", "block");
+      }
+      function tianjiaFun() {
+        event.preventDefault();
+        $("form").css("display", "block");
+      }
+      //背景颜色切换
+      const h1 = document.querySelector("h1");
+      const biaodanFun = document.querySelector(".tianjiaClass");
+      $(function () {
+        const select = $("#bg-color-select");
+        const body = $("body");
+        const option = {
+          colorU: "colorU",
+          colorX: "colorX",
+          colorY: "colorY",
+        };
+        if (localStorage.getItem("bgcolor")) {
+          const bgcolor = localStorage.getItem("bgcolor");
+          body.attr("class", bgcolor);
+          select.val(bgcolor);
+        }
+        select.on("change", function () {
+          const bgcolor = $(this).val();
+          localStorage.setItem("bgcolor", bgcolor);
+          body.attr("class", option[bgcolor]);
+        });
+        $(document).ready(function () {
+          if ($("body").css("background-color") == "rgb(0, 0, 0)") {
+            $("body").css("color", "#fff");
+          }
+        });
+      });
+      //修改
+      let item = $("#tbody button");
+      $("table").on("click", ".bianji", function () {
+        event.preventDefault();
+        $("form").css("display", "block");
+        h1.innerHTML = "修改歌曲表单";
+        biaodanFun.innerHTML = "确定";
+        function chakanFun(data) {
+          event.preventDefault();
+          if (data.event.target.innerHTML == "修改") {
+            var title = $("#title").val();
+            var artist = $("#artist").val();
+            var album = $("#album").val();
+            var year = $("#year").val();
+            var genre = $("#genre").val();
+            $.ajax({
+              type: "put",
+              url: "http://81.68.107.245/api/songs/" + id,
+              dataType: "json",
+              headers: { "Content-Type": "application/json" },
+              data: JSON.stringify({
+                title: title,
+                artist: artist,
+                album: album,
+                year: year,
+                genre: genre,
+              }),
+              success: function (data) {
+                console.log(data);
+                if (data.code == "400") {
+                  $("form input").eq(0).val(data.data.title);
+                  $("form input").eq(1).val(data.data.artist);
+                  $("form input").eq(2).val(data.data.album);
+                  $("form input").eq(3).val(data.data.year);
+                  $("form input").eq(4).val(data.data.genre);
+                  xuanRanList();
+                } else {
+                  alert(data.msg);
+                  $("form").css("display", "none");
+                }
+              },
+            });
+          }
+        }
+      });
+      /* 
+      let item = $("tbody button")
+     
+          $.ajax({
+              
+              type: "put",
+              dataType: "json",
+              headers: {'Content-Type': 'application/json'},
+              data:JSON.stringify({
+                  title:item.eq(0).val(),
+                  artist:item.eq(1).val(),
+                  album:item.eq(2).val(),
+                  year:item.eq(3).val(),
+                  genre:item.eq(4).val(),
+              }),
+              success: function (res){
+                console.log(res);
+                  if (res.code == 400) {
+                     xuanRanList();
+                     console.log(res);
+                  } else {
+                      console.log(res);
+                      alert(res.msg)
+                  }
+                  $('form').css('display', 'none')
+              }
+          });
+      }) */
+      //查看
+      $("table").on("click", ".chakan", function () {
+        $("form").css("display", "block");
+        h1.innerHTML = "查看歌曲表单";
+        biaodanFun.innerHTML = "确定";
+      });
+      $("tbody").on("click", chakanFun);
+      function chakanFun(data) {
+        event.preventDefault();
+        let id = event.target.dataset.id;
+        if (data.target.innerHTML == "查看") {
+          $.ajax({
+            type: "get",
+            url: "https://mp3.zzgoodqc.cn/api/songs/" + id,
+            dataType: "json",
+            success: function (data) {
+              console.log(data);
+              if (data.code == "200") {
+                $("form input").eq(0).val(data.data.title);
+                $("form input").eq(1).val(data.data.artist);
+                $("form input").eq(2).val(data.data.album);
+                $("form input").eq(3).val(data.data.year);
+                $("form input").eq(4).val(data.data.genre);
+              } else {
+                console.log(data);
+                $("form").css("display", "none");
+              }
+            },
+          });
+        }
+      }
+      //删除
+      $("tbody").on("click", zhuShiFun);
+      function zhuShiFun(data) {
+        event.preventDefault();
+        let id = event.target.dataset.id;
+        if (data.target.innerHTML == "删除") {
+          if (confirm("确定要删除吗?")) {
+            $.ajax({
+              type: "delete",
+              url: "https://mp3.zzgoodqc.cn/api/songs/" + id,
+              dataType: "json",
+              success: function (data) {
+                console.log(data);
+                if (data.code == "200") {
+                  alert("删除成功");
+                } else {
+                  alert("删除失败");
+                }
+                xuanRanList();
+              },
+            });
+          }
+        }
+      }
+      //添加
+      $(".tianjiaClass").on("click", function () {
+        event.preventDefault();
+        var title = $("#title").val();
+        var artist = $("#artist").val();
+        var album = $("#album").val();
+        var year = $("#year").val();
+        var genre = $("#genre").val();
+        $.ajax({
+          url: "https://mp3.zzgoodqc.cn/api/songs",
+          type: "POST",
+          dataType: "json",
+          headers: { "Content-Type": "application/json" },
+          data: JSON.stringify({
+            title: title,
+            artist: artist,
+            album: album,
+            year: year,
+            genre: genre,
+          }),
+          success: function (res) {
+            console.log(res);
+            if (res.code == 0) {
+              xuanRanList();
+            } else {
+              console.log(res);
+            }
+            $("form").css("display", "none");
+          },
+        });
+      });
+      //渲染
+      function xuanRanList() {
+        $.ajax({
+          type: "get",
+          // https://mp3.zzgoodqc.cn/api/songs
+          url: `https://mp3.zzgoodqc.cn/api/songs`,
+          dataType: "json",
+          data: {
+            page: 1,
+            pageSize: 10,
+          },
+          success: function (data) {
+            getshopping(data);
+          },
+        });
+      }
+      function getshopping(data) {
+        let html = "";
+        data.data.forEach((item, index) => {
+          html += `
+          <tr>
+            <td>${index++}</td>
+            <td>${item.title}</td>
+            <td>${item.artist}</td>
+            <td>${item.album}</td>
+            <td>${item.year}</td>
+            <td>${item.genre}</td>
+            <td>${item.length}</td>
+            <td>${item.created_at}</td>
+            <td>${item.updated_at}</td>
+            <td>${item.image_url}</td>
+            <td>
+                <button class="chakan" data-id=${item.id}>查看</button>
+                <button class="bianji" data-id=${item.id}>修改</button>
+                <button class="zhuxiao" data-id=${item.id}>删除</button>
+            </td>
+          </tr>`;
+        });
+        $("tbody").html(html);
+      }
+    </script>
+  </body>
+</html>
