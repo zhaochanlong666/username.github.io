@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="./五一假期作业/echarts.min.js"></script>
+    <link rel="stylesheet" href="./五一假期作业/layui.js" />
+    <link rel="stylesheet" href="./五一假期作业/layui.css" />
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.4/jquery.js"></script>
+    <style>
+     body {
+        padding: 20px;
+      }
+      #box {
+        margin: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="box"></div>
+    
+    <div id="min" style="width: 800px; height: 500px"></div>
+    <button class="layui-btn" onclick="destroyFun()">销毁实例</button>
+    <script>
+      let student = [
+      {
+          name: "赵灿龙",
+          result: [
+            {
+              date: "2023-3-31",
+              subject: [
+                {
+                  name: "机试",
+                  score: 90,
+                },
+              ],
+            },
+            {
+              date: "2023-4-7",
+              subject: [
+                {
+                  name: "笔试",
+                  score: 51,
+                },
+                {
+                  name: "机试",
+                  score: 70,
+                },
+              ],
+            },
+            {
+              date: "2023-4-17",
+              subject: [
+                {
+                  name: "机试",
+                  score: 65,
+                },
+              ],
+            },
+            {
+              date: "2023-4-21",
+              subject: [
+                {
+                  name: "笔试",
+                  score: 29,
+                },
+                {
+                  name: "机试",
+                  score: 50,
+                },
+              ],
+            },
+          ],
+        },
+        {
+          name: "郭栋彬",
+          result: [
+            {
+              date: "2023-3-31",
+              subject: [
+                {
+                  name: "机试",
+                  score: 85,
+                },
+              ],
+            },
+            {
+              date: "2023-4-7",
+              subject: [
+                {
+                  name: "笔试",
+                  score: 67,
+                },
+                {
+                  name: "机试",
+                  score: 99,
+                },
+              ],
+            },
+            {
+              date: "2023-4-17",
+              subject: [
+                {
+                  name: "机试",
+                  score: 70,
+                },
+              ],
+            },
+            {
+              date: "2023-4-21",
+              subject: [
+                {
+                  name: "笔试",
+                  score: 49,
+                },
+                {
+                  name: "机试",
+                  score: 90,
+                },
+              ],
+            },
+          ],
+        },
+        {
+          name: "陈静",
+          result: [
+            {
+              date: "2023-3-31",
+              subject: [
+                {
+                  name: "机试",
+                  score: 60,
+                },
+              ],
+            },
+            {
+              date: "2023-4-7",
+              subject: [
+                {
+                  name: "笔试",
+                  score: 85,
+                },
+                {
+                  name: "机试",
+                  score: 35,
+                },
+              ],
+            },
+            {
+              date: "2023-4-17",
+              subject: [
+                {
+                  name: "机试",
+                  score: 70,
+                },
+              ],
+            },
+            {
+              date: "2023-4-21",
+              subject: [
+                {
+                  name: "笔试",
+                  score: 65,
+                },
+                {
+                  name: "机试",
+                  score: 75,
+                },
+              ],
+            },
+          ],
+        },
+      ];
+      showList();
+      function showList() {
+        let html = "";
+        student.forEach((item, index) => {
+          html += `
+       <button class="layui-btn" data-idx=${index}>${item.name}</button>
+      `;
+        });
+        $("#box").html(html);
+      }
+      var studentIndex = 0,
+        myChart,
+        option;
+      initEchats((studentIndex));
+      function initEchats(studentIndex) {
+        myChart = echarts.init(document.getElementById("min"));
+        option = {
+          title: {
+            text: `${student[studentIndex].name}的成绩`,
+          },
+          legend: {
+            data: ["机试" , "笔试"],
+          },
+          tooltip: {
+            trigger: "axis",
+            axisPointer: {
+              type: "shadow",
+            },
+          },
+          xAxis: {
+            type: "category",
+            data: getXdata(studentIndex),
+          },
+          yAxis: {
+            type: "value",
+          },
+          series: getScore(studentIndex),
+        };
+        myChart.setOption(option);
+      }
+      function getScore(studentIndex) {
+        let jishiAdd = [],
+          bishiAdd = [];
+        let res2 = student[studentIndex].result.map((item, index) => {
+          return item.subject.filter((item, index) => {
+            if (item.name == "机试" && index == 0) {
+              jishiAdd.push(item.score);
+              bishiAdd.push(0)
+              return jishiAdd,bishiAdd;
+            } else if (item.name == "机试" && index == 1) {
+              jishiAdd.push(item.score);
+              return jishiAdd;
+            } else if (item.name == "笔试"){
+                bishiAdd.push(item.score);
+                return bishiAdd;
+            }
+          });
+        });
+        return [
+          {
+            label: {
+              show: true,
+              position: "top",
+            },
+            data: jishiAdd,
+            name: "机试",
+            type: "bar",
+          },
+          {
+            label: {
+              show: true,
+              position: "top",
+            },
+            data: bishiAdd,
+            name: "笔试",
+            type: "bar",
+          },
+        ];
+      }
+      function getXdata(studentIndex) {
+        let res = student[studentIndex].result.map((item, index) => {
+          return item.date;
+        });
+        return res;
+      }
+      $("#box").on("click", "button", function () {
+        initEchats($(this).data("idx"));
+      });
+      function destroyFun() {
+            // 清空当前实例，会移除实例中所有的组件和图表。
+            var myChart = echarts.init(document.getElementById('min'));
+            myChart.clear()
+            showList()
+        }
+    </script>
+  </body>
+</html>
