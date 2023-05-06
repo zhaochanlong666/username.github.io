@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.4/jquery.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/echarts/5.4.2/echarts.common.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <style>
+      #box {
+        width: 1000px;
+        height: 500px;
+        margin: 100px;
+        margin-left: 400px;
+      }
+      .no1,
+      .no2 {
+        width: 200px;
+        height: 150px;
+        margin: 10px;
+        background-color: rgb(247, 247, 245);
+        text-align: center;
+        line-height: 50px;
+      }
+      .no1 {
+        position: absolute;
+        top: 100px;
+        left: 150px;
+      }
+      .n1 {
+        width: 15px;
+        height: 15px;
+        background-color: red;
+        transform: translate(30px, 32px);
+      }
+      .n2 {
+        background-color: aquamarine;
+      }
+      .no2 {
+        position: absolute;
+        top: 260px;
+        left: 150px;
+      }
+      button {
+        margin: 20px;
+        float: right;
+        width: 60px;
+        height: 30px;
+        background-color: blue;
+        color: aliceblue;
+      }
+      button:hover {
+        background-color: red;
+        border: 1px solid red;
+      }
+      .conter {
+        width: 1200px;
+        height: 50px;
+        background-color: aliceblue;
+        line-height: 50px;
+        margin-left: 100px;
+        padding: 0 50px;
+      }
+
+    </style>
+  </head>
+  <body>
+    <div class="conter">
+      浏览量分析
+      <button onclick="btn1()">今天</button>
+      <button onclick="btn2()">昨天</button>
+      <button onclick="btn3()">近七日</button>
+      <button onclick="btn4()">近30天</button>
+    </div>
+    <div id="box"></div>
+    <div class="no1">
+      <div class="n1"></div>
+      <b>PV(总浏览量)</b>
+      <h2 class="a">195</h2>
+    </div>
+    <div class="no2">
+      <div class="n1 n2"></div>
+      <b>UV(总浏览量)</b>
+      <h2 class="a1">0</h2>
+    </div>
+    <a
+      href="./轮播图.html"
+      style="width: 100px； height：50px; background-color:blue; color: white; "
+      >作业一</a
+    >
+    <a
+      href="./地图.html"
+      style="width: 100px； height：50px; background-color: blue; color: white;"
+      >作业三</a
+    >
+  </body>
+  <script>
+    function btn2() {
+      $(".a").html("250");
+      $(".a1").html("0");
+      let chartDom = document.getElementById("box");
+      let myChart = echarts.init(chartDom);
+      let option;
+      option = {
+        tooltip: {},
+        legend: {
+          data: ["PV", "UV"],
+        },
+        xAxis: {
+          type: "category",
+          data: ["00.00", "02.00", "04.00", "06.00", "08.00", "10.00", "12.00"],
+        },
+        yAxis: {
+          type: "value",
+        },
+        series: [
+          {
+            name: "PV",
+            data: [5, 0, 12, 60, 200, 40, 13],
+            type: "line",
+            smooth: true,
+          },
+          {
+            name: "UV",
+            data: [],
+            type: "line",
+            smooth: true,
+          },
+        ],
+      };
+      myChart.setOption(option);
+    }
+    function btn3() {
+      $(".a").html("2170");
+      $(".a1").html("118");
+      let chartDom = document.getElementById("box");
+      let myChart = echarts.init(chartDom);
+      let option;
+      option = {
+        tooltip: {},
+        legend: {
+          data: ["PV", "UV"],
+        },
+        xAxis: {
+          type: "category",
+          data: [
+            "2023-04-30",
+            "2023-05-01",
+            "2023-05-02",
+            "2023-05-03",
+            "2023-05-04",
+            "2023-05-05",
+            "2023-05-06",
+          ],
+        },
+        yAxis: {
+          type: "value",
+        },
+        series: [
+          {
+            name: "PV",
+            data: [5, 0, 12, 60, 600, 40, 13],
+            type: "line",
+            smooth: true,
+          },
+          {
+            name: "UV",
+            data: [20, 80, 20, 16, 100, 23, 23],
+            type: "line",
+            smooth: true,
+          },
+        ],
+      };
+      myChart.setOption(option);
+    }
+    function btn4() {
+      $(".a").html("20302");
+      $(".a1").html("1056");
+      let chartDom = document.getElementById("box");
+      let myChart = echarts.init(chartDom);
+      let option;
+      option = {
+        tooltip: {},
+        legend: {
+          data: ["PV", "UV"],
+        },
+        xAxis: {
+          type: "category",
+          data: [
+            "2023-04-07",
+            "2023-04-11",
+            "2023-04-19",
+            "2023-04-23",
+            "2023-04-27",
+            "2023-05-01",
+            "2023-05-05",
+          ],
+        },
+        yAxis: {
+          type: "value",
+          axisLine: { onZero: false },
+          axisLabel: {
+            formatter: "{value} k",
+          },
+          boundaryGap: false,
+          data: ["0", "10"],
+        },
+        series: [
+          {
+            name: "PV",
+            data: [5, 0, 12, 60, 1000, 40, 13],
+            type: "line",
+            smooth: true,
+          },
+          {
+            name: "UV",
+            data: [20, 80, 26, 16, 300, 23, 23],
+            type: "line",
+            smooth: true,
+          },
+        ],
+      };
+      myChart.setOption(option);
+    }
+    function btn1() {
+      $(".a1").html("0");
+      let chartDom = document.getElementById("box");
+      let myChart = echarts.init(chartDom);
+      let option;
+      option = {
+        tooltip: {},
+        legend: {
+          data: ["PV", "UV"],
+        },
+        xAxis: {
+          type: "category",
+          data: ["00.00", "02.00", "04.00", "06.00", "08.00", "10.00", "12.00"],
+        },
+        yAxis: {
+          type: "value",
+        },
+        series: [
+          {
+            name: "PV",
+            data: [5, 80, 12, 60, 0, 40, 13],
+            type: "line",
+            smooth: true,
+          },
+          {
+            name: "UV",
+            data: [],
+            type: "line",
+            smooth: true,
+          },
+        ],
+      };
+      myChart.setOption(option);
+    }
+    let chartDom = document.getElementById("box");
+    let myChart = echarts.init(chartDom);
+    let option;
+    option = {
+      tooltip: {},
+      legend: {
+        data: ["PV", "UV"],
+      },
+      xAxis: {
+        type: "category",
+        data: ["00.00", "02.00", "04.00", "06.00", "08.00", "10.00", "12.00"],
+      },
+      yAxis: {
+        type: "value",
+      },
+      series: [
+        {
+          name: "PV",
+          data: [5, 80, 12, 60, 0, 40, 13],
+          type: "line",
+          smooth: true,
+        },
+        {
+          name: "UV",
+          data: [],
+          type: "line",
+          smooth: true,
+        },
+      ],
+    };
+    myChart.setOption(option);
+  </script>
+</html>

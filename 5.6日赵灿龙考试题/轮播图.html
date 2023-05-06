@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Swiper demo</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1"
+    />
+    <!-- Link Swiper's CSS -->
+    <link rel="stylesheet" href="./swiper/swiper-bundle.min.css" />
+    <!-- Demo styles -->
+    <script src="./swiper/jquery.js"></script>
+    <style>
+      #quanju {
+        width: 1800px;
+        height: 950px;
+      }
+      #quanju {
+        font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+        font-size: 14px;
+        margin: 0;
+        padding: 0;
+      }
+
+      .swiper {
+        width: 100%;
+        height: 100%;
+      }
+
+      .swiper-slide {
+        text-align: center;
+        font-size: 18px;
+        background: #000000;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+      }
+
+      .swiper-slide img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      #quanju {
+        background: #000;
+        color: #000;
+      }
+
+      .swiper {
+        width: 100%;
+        height: 300px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .swiper-slide {
+        background-size: cover;
+        background-position: center;
+      }
+
+      .mySwiper2 {
+        height: 80%;
+        width: 100%;
+      }
+
+      .mySwiper {
+        height: 20%;
+        box-sizing: border-box;
+        padding: 10px 0;
+      }
+
+      .mySwiper .swiper-slide {
+        width: 25%;
+        height: 100%;
+        opacity: 0.4;
+      }
+
+      .mySwiper .swiper-slide-thumb-active {
+        opacity: 1;
+      }
+
+      .swiper-slide img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .swiper-button-next {
+        position: absolute;
+        left: 1180px;
+      }
+      #quan {
+        position: relative;
+        width: 1800px;
+      }
+
+      #reset img {
+        position: absolute;
+        top: 30px;
+        left: 100px;
+        width: 1000px;
+        height: 83%;
+      }
+      span {
+        position: absolute;
+        top: 5%;
+        right: 2%;
+        color: #fff;
+        width: 500px;
+        height: 200px;
+        background-color: rgb(36, 36, 36);
+        border-radius: 3%;
+        box-shadow: 0px 0px 10px rgba(94, 94, 94, 0.5);
+      }
+      p {
+        text-indent: 2em;
+        float: left;
+      }
+      .swiper-button-prev {
+        display: none;
+      }
+      #box1 {
+        position: relative;
+      }
+      #box1::after {
+        content: "碧落疏离，十年生死两相逢。";
+        font-size: 24px;
+        font-weight: bold;
+        float: left;
+        font-size: 19px;
+        color: white;
+        position: absolute;
+        top: 76%;
+        left: 35%;
+        transform: translate(-50%, -50%);
+      }
+      #box2 {
+        position: relative;
+      }
+      #box2::after {
+        content: "密牢破碎，魅影忽现，积怨的吐息是来自地狱的呻吟？";
+        font-size: 24px;
+        font-weight: bold;
+        float: left;
+        font-size: 19px;
+        color: white;
+        position: absolute;
+        top: 76%;
+        left: 35%;
+        transform: translate(-50%, -50%);
+      }
+      #box3 {
+        position: relative;
+      }
+      #box3::after {
+        content: "千载孤独终有限，高山送流水。";
+        font-size: 24px;
+        font-weight: bold;
+        float: left;
+        font-size: 19px;
+        color: white;
+        position: absolute;
+        top: 76%;
+        left: 35%;
+        transform: translate(-50%, -50%);
+      }
+      #box4 {
+        position: relative;
+      }
+      #box4::after {
+        content: "新蕾初醒娇欲滴，恋曲声声唤君名。";
+        font-size: 24px;
+        font-weight: bold;
+        float: left;
+        font-size: 19px;
+        color: white;
+        position: absolute;
+        top: 76%;
+        left: 35%;
+        transform: translate(-50%, -50%);
+      }
+      #box5 {
+        position: relative;
+      }
+      #box5::after {
+        content: "前路不明，退无可退，出鞘的利剑为谁而低吟？";
+        font-size: 24px;
+        font-weight: bold;
+        float: left;
+        font-size: 19px;
+        color: white;
+        position: absolute;
+        top: 76%;
+        left: 35%;
+        transform: translate(-50%, -50%);
+      }
+      #box6 {
+        position: relative;
+      }
+      #box6::after {
+        content: "谜案诡谲，死水波澜，被层层掩埋的会是真相还是人心？";
+        font-size: 24px;
+        font-weight: bold;
+        float: left;
+        font-size: 19px;
+        color: white;
+        position: absolute;
+        top: 76%;
+        left: 35%;
+        transform: translate(-50%, -50%);
+      }
+      #box7 {
+        position: relative;
+      }
+      #box7::after {
+        content: "此去愿君少愁伤，苦楚辛酸皆尽饮。";
+        font-size: 24px;
+        font-weight: bold;
+        float: left;
+        font-size: 19px;
+        color: white;
+        position: absolute;
+        top: 76%;
+        left: 35%;
+        transform: translate(-50%, -50%);
+      }
+      #box8 {
+        position: relative;
+      }
+      #box8::after {
+        content: "琴难奏，忘叽忧，知己黄泉路。";
+        font-size: 24px;
+        font-weight: bold;
+        float: left;
+        font-size: 19px;
+        color: white;
+        position: absolute;
+        top: 76%;
+        left: 35%;
+        transform: translate(-50%, -50%);
+      }
+      #box9 {
+        position: relative;
+      }
+      #box9::after {
+        content: "拈花一笑，处变不惊，临危不乱。";
+        font-size: 24px;
+        font-weight: bold;
+        float: left;
+        font-size: 19px;
+        color: white;
+        position: absolute;
+        top: 76%;
+        left: 35%;
+        transform: translate(-50%, -50%);
+      }
+      #box {
+        position: relative;
+      }
+      #box::after {
+        content: "呼吸化为亡灵，尽归幽冥之间。";
+        font-size: 24px;
+        font-weight: bold;
+        float: left;
+        font-size: 19px;
+        color: white;
+        position: absolute;
+        top: 76%;
+        left: 35%;
+        transform: translate(-50%, -50%);
+      }
+      .chakan {
+        position: absolute;
+        right: 1300px;
+        bottom: 35px;
+        color: #fff;
+        background-color: #000;
+        font-size: 23px;
+        border: none;
+      }
+      .chakan:hover {
+        color: rgb(242, 151, 70);
+      }
+      .baocun:hover {
+        color: rgb(242, 151, 70);
+      }
+      .baocun {
+        position: absolute;
+        right: 1150px;
+        bottom: 35px;
+        color: #fff;
+        background-color: #000;
+        font-size: 23px;
+        border: none;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Swiper -->
+    <div id="quanju">
+      <div
+        style="--swiper-navigation-color: #fff; --swiper-pagination-color: #000"
+        class="swiper mySwiper2"
+        id="quan"
+      >
+        <div class="swiper-wrapper" id="reset">
+          <div class="swiper-slide">
+            <img src="https://w.wallhaven.cc/full/6d/wallhaven-6dmoe7.jpg" />
+            <span>
+              <p>碧落疏离，十年生死两相逢。</p>
+            </span>
+            <button class="chakan">查看图片</button>
+            <button class="baocun">保存</button>
+          </div>
+          <div class="swiper-slide">
+            <img src="https://w.wallhaven.cc/full/vq/wallhaven-vqpz65.jpg" />
+            <span>
+              <p>密牢破碎，魅影忽现，积怨的吐息是来自地狱的呻吟？</p>
+            </span>
+            <button class="chakan">查看图片</button>
+            <button class="baocun">保存</button>
+          </div>
+          <div class="swiper-slide">
+            <img src="https://w.wallhaven.cc/full/we/wallhaven-we55g6.jpg" />
+            <span>
+              <p>千载孤独终有限，高山送流水。</p>
+            </span>
+            <button class="chakan">查看图片</button>
+            <button class="baocun">保存</button>
+          </div>
+          <div class="swiper-slide">
+            <img src="https://w.wallhaven.cc/full/we/wallhaven-we6qk6.jpg" />
+            <span>
+              <p>新蕾初醒娇欲滴，恋曲声声唤君名。</p>
+            </span>
+            <button class="chakan">查看图片</button>
+            <button class="baocun">保存</button>
+          </div>
+          <div class="swiper-slide">
+            <img src="https://w.wallhaven.cc/full/ex/wallhaven-ex8d8l.jpg" />
+            <span>
+              <p>前路不明，退无可退，出鞘的利剑为谁而低吟？</p>
+            </span>
+            <button class="chakan">查看图片</button>
+            <button class="baocun">保存</button>
+          </div>
+          <div class="swiper-slide">
+            <img src="https://w.wallhaven.cc/full/x6/wallhaven-x6e9g3.jpg" />
+            <span>
+              <p>谜案诡谲，死水波澜，被层层掩埋的会是真相还是人心？</p>
+            </span>
+            <button class="chakan">查看图片</button>
+            <button class="baocun">保存</button>
+          </div>
+          <div class="swiper-slide">
+            <img src="https://w.wallhaven.cc/full/l8/wallhaven-l8wgp2.jpg" />
+            <span>
+              <p>此去愿君少愁伤，苦楚辛酸皆尽饮。</p>
+            </span>
+            <button class="chakan">查看图片</button>
+            <button class="baocun">保存</button>
+          </div>
+          <div class="swiper-slide">
+            <img src="https://w.wallhaven.cc/full/m3/wallhaven-m3zzj8.jpg" />
+            <span>
+              <p>琴难奏，忘叽忧，知己黄泉路。</p>
+            </span>
+            <button class="chakan">查看图片</button>
+            <button class="baocun">保存</button>
+          </div>
+          <div class="swiper-slide">
+            <img src="https://w.wallhaven.cc/full/o5/wallhaven-o5gl9p.jpg" />
+            <span>
+              <p>拈花一笑，处变不惊，临危不乱。</p>
+            </span>
+            <button class="chakan">查看图片</button>
+            <button class="baocun">保存</button>
+          </div>
+          <div class="swiper-slide">
+            <img src="https://w.wallhaven.cc/full/vq/wallhaven-vqok1l.jpg" />
+            <span>
+              <p>呼吸化为亡灵，尽归幽冥之间。</p>
+            </span>
+            <button class="chakan">查看图片</button>
+            <button class="baocun">保存</button>
+          </div>
+        </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+      </div>
+      <div thumbsSlider="" class="swiper mySwiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide" id="box1">
+            <img src="https://w.wallhaven.cc/full/6d/wallhaven-6dmoe7.jpg" />
+          </div>
+          <div class="swiper-slide" id="box2">
+            <img src="https://w.wallhaven.cc/full/vq/wallhaven-vqpz65.jpg" />
+          </div>
+          <div class="swiper-slide" id="box3">
+            <img src="https://w.wallhaven.cc/full/we/wallhaven-we55g6.jpg" />
+          </div>
+          <div class="swiper-slide" id="box4">
+            <img src="https://w.wallhaven.cc/full/we/wallhaven-we6qk6.jpg" />
+          </div>
+          <div class="swiper-slide" id="box5">
+            <img src="https://w.wallhaven.cc/full/ex/wallhaven-ex8d8l.jpg" />
+          </div>
+          <div class="swiper-slide" id="box6">
+            <img src="https://w.wallhaven.cc/full/x6/wallhaven-x6e9g3.jpg" />
+          </div>
+          <div class="swiper-slide" id="box7">
+            <img src="https://w.wallhaven.cc/full/l8/wallhaven-l8wgp2.jpg" />
+          </div>
+          <div class="swiper-slide" id="box8">
+            <img src="https://w.wallhaven.cc/full/m3/wallhaven-m3zzj8.jpg" />
+          </div>
+          <div class="swiper-slide" id="box9">
+            <img src="https://w.wallhaven.cc/full/o5/wallhaven-o5gl9p.jpg" />
+          </div>
+          <div class="swiper-slide" id="box">
+            <img src="https://w.wallhaven.cc/full/vq/wallhaven-vqok1l.jpg" />
+          </div>
+        </div>
+      </div>
+    </div>
+    <a
+      href="./波动图.html"
+      style="width: 100px； height：50px; background-color:blue; color: white; "
+      >作业二</a
+    >
+    <a
+      href="./地图.html"
+      style="width: 100px； height：50px; background-color: blue; color: white;"
+      >作业三</a
+    >
+    <!-- Swiper JS -->
+    <script src="./swiper/swiper-bundle.min.js"></script>
+    <!-- Initialize Swiper -->
+    <script>
+        $('.chakan').click(function(){
+        var strList = $('.swiper-slide-active img').attr('src');
+        var link = document.createElement("a");
+        link.download = strList.substring(strList.lastIndexOf('/')+1);
+        link.href = strList;
+        link.click();
+    })
+        // 点击下载按钮下载图片
+        $('baocun').click(function () {
+        var img = $(this).siblings('.downloadable')[0];
+        var filename = img.getAttribute('data-filename');
+        var url = img.src;
+        // 创建虚拟链接下载图片
+        var a = document.createElement('a');
+        a.href = url;
+        a.download = filename;
+        a.click();
+    });
+      var swiper = new Swiper(".mySwiper", {
+        spaceBetween: 10,
+        slidesPerView: 4,
+        freeMode: true,
+        watchSlidesProgress: true,
+      });
+      var swiper2 = new Swiper(".mySwiper2", {
+        spaceBetween: 10,
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+        on: {
+          slideChange: function () {
+            var lastIndex = this.slides.length - 1;
+            if (this.activeIndex === lastIndex) {
+              $(".swiper-button-next").hide();
+            } else {
+              $(".swiper-button-next").show();
+            }
+            if (this.activeIndex === 0) {
+              $(".swiper-button-prev").hide();
+            } else {
+              $(".swiper-button-prev").show();
+            }
+          },
+        },
+        thumbs: {
+          swiper: swiper,
+        },
+      });
+    </script>
+  </body>
+</html>
