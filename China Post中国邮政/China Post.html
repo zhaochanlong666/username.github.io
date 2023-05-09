@@ -1,0 +1,1147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flexbox布局</title>
+    <!-- 引入 layui.css -->
+    <link href="./中国邮政/swiper/layui.css" rel="stylesheet" />
+
+    <!-- 引入 layui.js -->
+    <script src="./中国邮政/swiper/layui.js"></script>
+    <!-- 轮播图引入 -->
+    <link rel="stylesheet" href="./中国邮政/swiper/swiper-bundle.min.css" />
+    <script src="./中国邮政/swiper/swiper-bundle.min.js"></script>
+    <style>
+      #box {
+        margin: auto;
+        width: 1420px;
+        height: 1500px;
+      }
+      .parent {
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* 可选，使子元素在水平方向上居中对齐 */
+        /* justify-content: center; */ /* 可选，使子元素在垂直方向上居中对齐 */
+        height: 300vh; /* 可选，设置父元素高度为视口高度 */
+      }
+
+      .child {
+        width: 100%;
+        height: 50px;
+        background-color: #f3f7fc;
+        line-height: 0px;
+      }
+      .child1 {
+        position: relative;
+        width: 100%;
+        height: 500px;
+        background-color: rgb(247, 247, 247);
+      }
+      .child2 {
+        width: 100%;
+        height: 95px;
+        background-color: white;
+      }
+      .child ul li {
+        list-style: none;
+      }
+      .child li {
+        position: relative;
+        top: 10px;
+        float: right;
+        border-right: 1px solid rgb(206, 206, 206);
+        margin-right: 20px;
+        padding-right: 20px;
+        font-size: 14px;
+        height: 30px;
+        line-height: 30px;
+      }
+      .child1 li:hover {
+        color: rgb(99, 188, 158);
+      }
+      .child li:first-child {
+        border: none;
+      }
+      .child li select {
+        border: none;
+        background-color: #f3f7fc;
+      }
+      select:focus {
+        outline: none;
+        border: none;
+      }
+      select {
+        font-size: 14px;
+      }
+      /* 轮播图。。。。。。。。。。。。。。。。。。。。。。 */
+      .swiper {
+        width: 900px;
+        height: 370px;
+      }
+      #tu {
+        position: absolute;
+        top: 14px;
+      }
+      #shuru {
+        position: absolute;
+        width: 250px;
+        height: 30px;
+        top: 15px;
+        right: 100px;
+      }
+      .layui-btn {
+        position: absolute;
+        top: 17px;
+        right: 102px;
+      }
+      .child1 .swiper-slide {
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        font-size: 18px;
+        background: #fff;
+        /* Center slide text vertically */
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+      }
+      .layui-tab-title li {
+        position: absolute;
+        left: 300px;
+        display: inline;
+      }
+      .child1 .swiper-slide img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .child1 li {
+        list-style: none;
+      }
+      .child2 li {
+        list-style: none;
+      }
+      .child2 li {
+        position: relative;
+        left: 120px;
+        width: 180px;
+        height: 72px;
+        line-height: 72px;
+        background: #ffffff;
+        box-shadow: 0 2px 8px 0 rgba(2, 18, 40, 0.06);
+        border-radius: 4px;
+        float: left;
+        font-size: 18px;
+        font-weight: bold;
+        text-align: center;
+        margin-top: 10px;
+        margin-right: 25px;
+      }
+      .child3 {
+        margin-top: 20px;
+        display: flex;
+        width: 100%;
+        height: 372px;
+      }
+      .left {
+        flex: 1; /* 左侧栏占据剩余空间的比例 */
+        background-color: white;
+        width: 50%;
+      }
+      .left .swiper {
+        width: 700px;
+        height: 370px;
+      }
+      .left .swiper-slide img {
+        width: 100%;
+        height: 100%;
+      }
+      .right {
+        flex: 1; /* 右侧栏占据剩余空间的比例 */
+        background-color: white;
+        width: 50%;
+      }
+      .right ul li {
+        position: relative;
+        left: 30px;
+      }
+      .right li:hover {
+        color: rgb(99, 188, 158);
+      }
+
+      .right span {
+        float: right;
+        position: relative;
+        left: -50px;
+      }
+      b {
+        color: red;
+        font-weight: normal;
+      }
+
+      .child4 {
+        margin-top: 20px;
+        display: flex;
+        width: 100%;
+        height: 372px;
+      }
+      .left1 {
+        flex: 1; /* 左侧栏占据剩余空间的比例 */
+        background-color: white;
+        width: 50%;
+      }
+      h1 {
+        margin: 10px;
+        font-weight: normal;
+        font-size: 22px;
+      }
+      hr {
+        margin: 10px;
+      }
+      .right1 {
+        flex: 1; /* 右侧栏占据剩余空间的比例 */
+        background-color: white;
+        width: 50%;
+      }
+      .right1 ul li {
+        position: relative;
+        left: 30px;
+      }
+      .right1 li:hover {
+        color: rgb(99, 188, 158);
+      }
+
+      .right1 span {
+        float: right;
+        position: relative;
+        left: -50px;
+      }
+      video {
+        width: 700px;
+        height: 300px;
+      }
+      .child5 {
+        margin-top: 20px;
+        display: flex;
+        width: 100%;
+        height: 800px;
+      }
+      .left2 {
+        flex: 2; /* 左侧栏占据剩余空间的比例 */
+        background-color: white;
+        width: 70%;
+      }
+      .left2 a {
+        position: relative;
+        left: 500px;
+      }
+      .right2 {
+        flex: 1; /* 右侧栏占据剩余空间的比例 */
+        background-color: white;
+        width: 30%;
+      }
+      .right2 p {
+        font-size: 18px;
+        margin-left: 30px;
+      }
+      .right2 b {
+        color: green;
+        font-weight: bold;
+        margin-right: 10px;
+      }
+      .child5 span {
+        position: relative;
+        left: 40px;
+      }
+      .qr_code {
+        margin: auto;
+        width: 400px;
+        height: 330px;
+        background: #ffffff;
+        box-shadow: 0 2px 8px 0 rgba(2, 18, 40, 0.06);
+        border-radius: 4px;
+      }
+      .qr_code li {
+        width: 35%;
+        float: left;
+        text-align: center;
+        height: auto;
+        display: block;
+        margin-top: 15px;
+      }
+      .qr_code span {
+        position: relative;
+        left: -0px;
+      }
+      .child6 {
+        width: 100%;
+        height: 150px;
+        background-color: #f5f8fa;
+      }
+      .child6 hr {
+        position: relative;
+        top: -8px;
+      }
+      #son82 a {
+        color: gray;
+      }
+      #ul81 ul li {
+        position: relative;
+        right: 30px;
+      }
+    </style>
+  </head>
+  </style>
+  <body>
+    <div id="box">
+      <div class="parent">
+        <div class="child">
+          <ul>
+            <li>English</li>
+            <li>
+              <select name="" id="">
+                <option value="">各地邮政</option>
+                <option value="">北京邮政</option>
+                <option value="">天津邮政</option>
+                <option value="">河北邮政</option>
+                <option value="">山西邮政</option>
+                <option value="">内蒙古邮政</option>
+                <option value="">辽宁邮政</option>
+                <option value="">吉林邮政</option>
+                <option value="">黑龙江邮政</option>
+                <option value="">上海邮政</option>
+                <option value="">江苏邮政</option>
+                <option value="">安徽邮政</option>
+                <option value="">浙江邮政</option>
+                <option value="">福建邮政</option>
+              </select>
+            </li>
+            <li>
+              <select name="" id="">
+                <option value="">集团工会及直属单位</option>
+                <option value="">中国邮政集团工会</option>
+                <option value="">邮政科学研究规划院</option>
+                <option value="">中国邮政文史中心</option>
+                <option value="">新闻宣传中心</option>
+                <option value="">邮票印制局</option>
+                <option value="">石家庄邮电职业技术学院</option>
+                <option value="">中邮电子商务有限公司</option>
+                <option value="">中国邮政广告传媒公司</option>
+                <option value="">中邮信息科技(北京)有限公司</option>
+                <option value="">中邮实业投资有限公司</option>
+              </select>
+            </li>
+
+            <li>
+              <select name="" id="">
+                <option value="">控股公司及寄递事业部</option>
+                <option value="">中国邮政储蓄银行</option>
+                <option value="">中邮人寿保险股份有限公司</option>
+                <option value="">中邮证券有限责任公司</option>
+                <option value="">中邮资本管理有限公司</option>
+                <option value="">集团公司寄递事业部</option>
+              </select>
+            </li>
+          </ul>
+        </div>
+        <div class="child1">
+          <img
+            id="tu"
+            src="http://www.chinapost.com.cn/res/ChinaPostJT/structure/200568120.png"
+            style="width: 120px; height: 35px"
+          />
+
+          <div class="layui-tab layui-tab-brief">
+            <ul class="layui-tab-title">
+              <li class="layui-this">首页</li>
+              <li>关于我们</li>
+              <li>新闻中心</li>
+              <li>党建时空</li>
+              <li>产品服务</li>
+              <li>社会责任</li>
+              <li>企业文化</li>
+            </ul>
+            <input id="shuru" type="text" />
+            <button type="button" class="layui-btn layui-btn-sm">
+              小型按钮
+            </button>
+            <div class="layui-tab-content">
+              <div class="layui-tab-item layui-show">
+                <div class="swiper mySwiper">
+                  <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                      <img
+                        src="https://w.wallhaven.cc/full/jx/wallhaven-jxegyp.jpg"
+                      />
+                    </div>
+                    <div class="swiper-slide">
+                      <img
+                        src="https://w.wallhaven.cc/full/gp/wallhaven-gpw1we.png"
+                      />
+                    </div>
+                    <div class="swiper-slide">
+                      <img
+                        src="https://w.wallhaven.cc/full/2y/wallhaven-2yd9yx.jpg"
+                      />
+                    </div>
+                    <div class="swiper-slide">
+                      <img
+                        src="https://w.wallhaven.cc/full/2y/wallhaven-2ydor9.png"
+                      />
+                    </div>
+                    <div class="swiper-slide">
+                      <img
+                        src="https://w.wallhaven.cc/full/x6/wallhaven-x6eqdv.jpg"
+                      />
+                    </div>
+                  </div>
+                  <div class="swiper-pagination"></div>
+                </div>
+              </div>
+              <div class="layui-tab-item">关于我们</div>
+              <div class="layui-tab-item">新闻中心</div>
+              <div class="layui-tab-item">党建时空</div>
+              <div class="layui-tab-item">产品服务</div>
+              <div class="layui-tab-item">社会责任</div>
+              <div class="layui-tab-item">企业文化</div>
+            </div>
+          </div>
+        </div>
+        <div class="child2">
+          <ul>
+            <li>
+              <img src="./中国邮政/img/download1.png" />
+              <a href="https://www.11185.cn/web/#/index" target="blank"
+                >邮务业务</a
+              >
+            </li>
+            <li>
+              <img src="./中国邮政/img/download2.png" />
+              <a href="http://www.ems.com.cn/" target="blank">快递业务</a>
+            </li>
+            <li>
+              <img src="./中国邮政/img/download3.png" />
+              <a href="http://www.psbc.com/cn/index.html" target="blank"
+                >银行业务</a
+              >
+            </li>
+            <li>
+              <img src="./中国邮政/img/download4.png" />
+              <a href="https://www.chinapost-life.com" target="blank"
+                >保险业务</a
+              >
+            </li>
+            <li>
+              <img src="./中国邮政/img/download5.png" />
+              <a href="http://www.cnpsec.com.cn/main/index.html" target="blank"
+                >证券业务</a
+              >
+            </li>
+            <li>
+              <img src="./中国邮政/img/download6.png" />
+              <a href="http://www.ule.com/" target="blank">网上商城</a>
+            </li>
+          </ul>
+        </div>
+        <div class="child3">
+          <div class="left">
+            <div class="swiper mySwiper">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                  <img
+                    src="https://w.wallhaven.cc/full/l8/wallhaven-l8wgp2.jpg"
+                  />
+                </div>
+                <div class="swiper-slide">
+                  <img
+                    src="https://w.wallhaven.cc/full/v9/wallhaven-v9jz53.png"
+                  />
+                </div>
+                <div class="swiper-slide">
+                  <img
+                    src="https://w.wallhaven.cc/full/g7/wallhaven-g7zzq7.png"
+                  />
+                </div>
+                <div class="swiper-slide">
+                  <img
+                    src="https://w.wallhaven.cc/full/we/wallhaven-we668r.jpg"
+                  />
+                </div>
+                <div class="swiper-slide">
+                  <img
+                    src="https://w.wallhaven.cc/full/we/wallhaven-we6qk6.jpg"
+                  />
+                </div>
+              </div>
+              <div class="swiper-pagination"></div>
+            </div>
+          </div>
+          <div class="right">
+            <div class="layui-tab layui-tab-brief">
+              <ul class="layui-tab-title">
+                <li class="layui-this">集团要闻</li>
+                <li>综合新闻</li>
+                <li>媒体聚焦</li>
+                <li>一线风采</li>
+              </ul>
+              <div class="layui-tab-content">
+                <div class="layui-tab-item layui-show">
+                  <ul>
+                    <li>
+                      <h2>2023第19届中华全国集邮展览开幕</h2>
+                      <p>
+                        珍邮耀春城，集藏品天下。4月27日，2023第19届中华全国集邮展览在云南昆明滇池国际会展中心隆重开幕。十二届全国政协副主席、中国福利会主...
+                      </p>
+                    </li>
+                    <hr />
+                    <li>
+                      邮储银行党委举办主题教育读书班<span>2023-05-06</span>
+                    </li>
+                    <br />
+                    <li>中邮保险价值转型成效显著<span>2023-05-06</span></li>
+                    <br />
+                    <li>
+                      邮储银行一季度经营发展稳健开局
+                      “五大差异化增长极”建设成效...<span>2023-05-05</span>
+                    </li>
+                    <br />
+                    <li>
+                      中国邮政助力法院审判执行质效提高实现双赢多赢共赢<span
+                        >2023-05-05</span
+                      >
+                    </li>
+                    <br />
+                  </ul>
+                </div>
+                <div class="layui-tab-item">
+                  <ul>
+                    <li>
+                      <h2>南风吹拂绿意浓</h2>
+                      <p>
+                        作为合肥市邮政分公司自建的综合便民服务站，南丽湾服务站积极打造共享寄递平台，叠加多种便民服务，主动延展金融服务触角，打通了服务社区...
+                      </p>
+                    </li>
+                    <hr />
+                    <li>在城市寄递市场中突围<span>2023-05-06</span></li>
+                    <br />
+                    <li>
+                      中国邮政2023年度“烟台—南京”大樱桃专线开通<span
+                        >2023-05-06</span
+                      >
+                    </li>
+                    <br />
+                    <li>弘扬五四精神 绽放青春风采<span>2023-05-05</span></li>
+                    <br />
+                    <li>
+                      广东邮政探索寄递业务外包集采新路径<span>2023-05-05</span>
+                    </li>
+                  </ul>
+                </div>
+                <div class="layui-tab-item">
+                  <ul>
+                    <li>
+                      <h2>邮路绵延 山乡巨变</h2>
+                      <p>
+                        “十四五”规划和2035年远景目标纲要提出，实现抵边自然村邮政普遍覆盖。去年11月30日，云南省2207个抵边自然村全部实现邮政服务覆盖，有效...
+                      </p>
+                    </li>
+                    <hr />
+                    <li>
+                      <b>人民网：</b
+                      >李松：“要让邮政快递成为老百姓寄递的最佳选择”...
+                      <span>2023-05-04</span>
+                    </li>
+                    <br />
+                    <li>
+                      <b>经济日报：</b
+                      >中国邮政贵州龙里分公司邮递员莫富元——一心坚守风雨...
+                      <span>2023-05-04</span>
+                    </li>
+                    <br />
+                    <li>
+                      <b>北青网：</b>流动邮局亮相奥体中心区服务五一假期...
+                      <span>2023-05-04</span>
+                    </li>
+                    <br />
+                    <li>
+                      <b>杭州日报：</b>这位大学生邮递员捧回了“五一奖章”...
+                      <span>2023-05-04</span>
+                    </li>
+                    <br />
+                  </ul>
+                </div>
+                <div class="layui-tab-item">
+                  <ul>
+                    <li>
+                      <h2>“满意邮路”上的“爱心信使”</h2>
+                      <p>
+                        前不久，黑龙江省哈尔滨市邮政分公司平房投递支局揽投员郭庆被评为“第十七届全国职工职业道德建设先进个人”。1930，哈尔滨的夜幕早已降临...
+                      </p>
+                    </li>
+                    <hr />
+                    <li>助力春耕 “邮”我守护<span>2023-05-05</span></li>
+                    <br />
+                    <li>里见村的快递，村里“见”<span>2023-05-04</span></li>
+                    <br />
+                    <li>镌刻内心的那抹绿<span>2023-04-28</span></li>
+                    <br />
+                    <li>把奋斗写在人生的坐标上<span>2023-04-28</span></li>
+                    <br />
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="child4">
+          <div class="left1">
+            <h1>邮政视频</h1>
+            <hr />
+            <video
+              src="http://v.ctvpost.com/res/ChinaPostVideo/video/23041/2020_2.mp4"
+              controls="controls"
+              width="100%"
+              height="100%"
+            ></video>
+          </div>
+          <div class="right1">
+            <div class="layui-tab layui-tab-brief">
+              <ul class="layui-tab-title">
+                <li class="layui-this">信息公告</li>
+                <li>邮资票品发行信息</li>
+                <li>采购公告公示</li>
+                <li>预决算公开</li>
+              </ul>
+              <div class="layui-tab-content">
+                <div class="layui-tab-item layui-show">
+                  <ul>
+                    <li>
+                      中国邮政集团有限公司关于公开征集《甲辰年》特种邮票...<span
+                        >2023-04-27</span
+                      >
+                    </li>
+                    <br />
+                    <li>中国邮政集团有限公司任免通知<span>2023-03-01</span></li>
+                    <br />
+                    <li>
+                      中国共产党中国邮政集团有限公司党组任免通知<span
+                        >2023-03-01</span
+                      >
+                    </li>
+                    <br />
+                    <li>中国邮政集团有限公司任免通知<span>2023-02-22</span></li>
+                    <br />
+                    <li>
+                      中国共产党中国邮政集团有限公司党组任免通知<span
+                        >2023-02-22</span
+                      >
+                    </li>
+                    <br />
+                    <li>中国邮政集团有限公司任免通知<span>2023-02-17</span></li>
+                    <br />
+                    <li>
+                      2023中国邮政网络春晚优秀节目评选及优秀观众评选结果...<span
+                        >2023-02-17</span
+                      >
+                    </li>
+                    <br />
+                    <li>
+                      中国邮政集团有限公司审计部南京分部面向系统内招聘公...<span
+                        >2023-02-08</span
+                      >
+                    </li>
+                    <br />
+                  </ul>
+                </div>
+                <div class="layui-tab-item">
+                  <ul>
+                    <li>《中西建交五十周年》纪念邮票<span>2023-05-05</span></li>
+                    <br />
+                    <li>
+                      《中国古典文学名著——〈西游记〉（五）》特种邮票<span
+                        >2023-04-24</span
+                      >
+                    </li>
+                    <br />
+                    <li>
+                      《昆明2023第19届中华全国集邮展览》纪念邮资明信片...<span
+                        >2023-04-18</span
+                      >
+                    </li>
+                    <br />
+                    <li>
+                      《云南大学建校一百周年》纪念邮票<span>2023-04-10</span>
+                    </li>
+                    <br />
+                    <li>
+                      《东北大学建校一百周年》纪念邮票<span>2023-04-10</span>
+                    </li>
+                    <br />
+                    <li>
+                      《中央广播电视总台成立5周年》纪念邮资信封<span
+                        >2023-03-17</span
+                      >
+                    </li>
+                    <br />
+                    <li>
+                      《毛泽东“向雷锋同志学习”题词发表六十周年》纪念邮...<span
+                        >2023-03-03</span
+                      >
+                    </li>
+                    <br />
+                    <li>
+                      《中华人民共和国第十四届全国人民代表大会》纪念邮票<span
+                        >2023-02-27</span
+                      >
+                    </li>
+                    <br />
+                    <br />
+                  </ul>
+                </div>
+                <div class="layui-tab-item">
+                  <ul>
+                    <li>
+                      中国邮政集团公司供应商注册公告<span>2019-08-30</span>
+                    </li>
+                    <br />
+                    <li>
+                      中国邮政储蓄银行股份有限公司昌吉州分行2023年员工体...<span
+                        >2023-05-09</span
+                      >
+                    </li>
+                    <br />
+                    <li>
+                      中国邮政储蓄银行股份有限公司河南省分行网点墙地砖采...<span
+                        >2023-05-09</span
+                      >
+                    </li>
+                    <br />
+                    <li>
+                      中国邮政储蓄银行股份有限公司鹤岗市分行2023年车站媒...<span
+                        >2023-05-09</span
+                      >
+                    </li>
+                    <br />
+                    <li>
+                      中国邮政储蓄银行股份有限公司鹤岗市分行2023年媒体资...<span
+                        >2023-05-09</span
+                      >
+                    </li>
+                    <br />
+                    <li>
+                      中国邮政储蓄银行股份有限公司天津津南区支行食堂服务...<span
+                        >2023-05-09</span
+                      >
+                    </li>
+                    <br />
+                    <li>
+                      中国邮政速递物流股份有限公司衢州市分公司开化县营业...<span
+                        >2023-05-09</span
+                      >
+                    </li>
+                    <br />
+                    <li>
+                      中国邮政集团有限公司浙江省温岭市分公司保洁服务外包...<span
+                        >2023-05-09</span
+                      >
+                    </li>
+                    <br />
+                  </ul>
+                </div>
+                <div class="layui-tab-item">
+                  <ul>
+                    <li>
+                      中国邮政集团有限公司2023年部门预算<span>2023-03-28</span>
+                    </li>
+                    <br />
+                    <li>
+                      中国邮政集团有限公司2021年度部门决算<span
+                        >2022-07-21</span
+                      >
+                    </li>
+                    <br />
+                    <li>
+                      中国邮政集团有限公司2022年部门预算<span>2022-03-24</span>
+                    </li>
+                    <br />
+                    <li>
+                      中国邮政集团有限公司2020年度部门决算<span
+                        >2021-07-08</span
+                      >
+                    </li>
+                    <br />
+                    <li>
+                      中国邮政集团有限公司2021年部门预算<span>2021-03-25</span>
+                    </li>
+                    <br />
+                    <li>
+                      中国邮政集团公司2018年度部门决算<span>2019-07-19</span>
+                    </li>
+                    <br />
+                    <li>
+                      中国邮政集团公司2019年部门预算<span>2019-04-02</span>
+                    </li>
+                    <br />
+                    <li>
+                      中国邮政集团公司2017年度部门决算<span>2018-07-20</span>
+                    </li>
+                    <br />
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="child5">
+          <div class="left2">
+            <h1>邮政网点</h1>
+            <hr />
+            <p style="text-indent: 2em">
+              邮政官网新增邮政营业网点公示信息<span
+                ><a href="https://www.baidu.com/">查看更多</a></span
+              >
+            </p>
+            <div id="myditu">
+              <div id="container" class="map" tabindex="0"></div>
+            </div>
+          </div>
+          <div class="right2">
+            <h1>客服热线</h1>
+            <hr />
+            <p>
+              邮政业务<span><b>11185</b></span>
+            </p>
+            <br />
+            <p>
+              邮储银行<span><b>95580</b></span>
+            </p>
+            <br />
+            <p>
+              速递物流<span><b>11183</b></span>
+            </p>
+            <br />
+            <p>
+              中邮保险<span><b>4008909999</b></span>
+            </p>
+            <br />
+            <p>
+              中邮证券<span><b>4008888005</b></span>
+            </p>
+            <br />
+            <button
+              style="
+                width: 300px;
+                height: 60px;
+                background-color: green;
+                color: white;
+                font-size: 20px;
+                border: none;
+                border-radius: 5px;
+                position: relative;
+                left: 30px;
+              "
+            >
+              举报专区
+            </button>
+            <br /><br />
+            <h1>邮政新媒体</h1>
+            <hr />
+            <div class="qr_code">
+              <li>
+                <p>
+                  <img
+                    src="./中国邮政/img/download7.jpg"
+                    alt=""
+                    style="width: 100px; height: 100px"
+                  />
+                  <br />
+                  <span>中国邮政微信订阅号</span>
+                </p>
+              </li>
+              <li>
+                <p>
+                  <img
+                    src="./中国邮政/img/download8.jpg"
+                    alt=""
+                    style="width: 100px; height: 100px"
+                  />
+                  <span>中国邮政微信服务号</span>
+                </p>
+              </li>
+              <li>
+                <p>
+                  <img
+                    src="./中国邮政/img/download9.jpg"
+                    alt=""
+                    style="width: 100px; height: 100px"
+                  />
+                  <span>中国邮政官方微博</span>
+                </p>
+              </li>
+            </div>
+          </div>
+        </div>
+        <div class="child6">
+          <div id="son81" style="width: 100%; height: 50%">
+            <ul id="ul81">
+              <li
+                style="
+                  float: left;
+                  border-right: 1px solid grey;
+                  margin-left: 500px;
+                  line-height: 23px;
+                  margin-top: 25px;
+                  padding-right: 30px;
+                "
+              >
+                <a href=" ">中国政府网</a>
+              </li>
+              <li
+                style="
+                  float: left;
+                  border-right: 1px solid grey;
+                  margin-left: 30px;
+                  line-height: 23px;
+                  margin-top: 25px;
+                  padding-right: 20px;
+                "
+              >
+                <a href="#">财政部</a>
+              </li>
+              <li
+                style="
+                  float: left;
+                  border-right: 1px solid grey;
+                  margin-left: 30px;
+                  line-height: 23px;
+                  margin-top: 25px;
+                  padding-right: 20px;
+                "
+              >
+                <a href="#">交通运输部</a>
+              </li>
+              <li
+                style="
+                  float: left;
+                  margin-left: 30px;
+                  line-height: 23px;
+                  margin-top: 25px;
+                  padding-right: 20px;
+                "
+              >
+                <a href="#">国家邮政局</a>
+              </li>
+            </ul>
+          </div>
+          <hr />
+          <div id="son82" style="width: 100%; height: 40%">
+            <ul id="ul82">
+              <li
+                style="
+                  float: left;
+                  margin-left: 350px;
+                  line-height: 20px;
+                  margin-top: 9px;
+                  padding-right: 20px;
+                "
+              >
+                <a href="#">中国邮政集团有限公司版权所有</a>
+              </li>
+              <li
+                style="
+                  float: left;
+                  margin-left: 30px;
+                  line-height: 20px;
+                  margin-top: 9px;
+                  padding-right: 20px;
+                "
+              >
+                <a href="#">京ICP备15035540号</a>
+              </li>
+              <li
+                style="
+                  float: left;
+                  margin-left: 30px;
+                  line-height: 20px;
+                  margin-top: 9px;
+                  padding-right: 20px;
+                "
+              >
+                <a href="#">京公网安备110401400185</a>
+              </li>
+              <li
+                style="
+                  float: left;
+                  margin-left: 30px;
+                  line-height: 20px;
+                  margin-top: 9px;
+                  padding-right: 20px;
+                "
+              >
+                <a href="#">联系我们</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      var swiper = new Swiper(".mySwiper", {
+        spaceBetween: 30,
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
+      });
+    </script>
+    <script>
+      var video = document.getElementById("myVideo");
+      function playPause() {
+        if (video.paused) {
+          video.play();
+        } else {
+          video.pause();
+        }
+      }
+    </script>
+
+    <script
+      type="text/javascript"
+      src="https://webapi.amap.com/maps?v=2.0&key=fece8266c6cab577fe6e89652a765421&plugin=AMap.Driving"
+    ></script>
+    <script
+      language="javascript"
+      src="https://webapi.amap.com/maps?v=2.0&key=fece8266c6cab577fe6e89652a765421&plugin=AMap.Scale,AMap.ToolBar"
+    ></script>
+    <script
+      type="text/javascript"
+      src="https://a.amap.com/jsapi_demos/static/demo-center/data/china-pp.js"
+    ></script>
+    <script type="text/javascript">
+      var SOC = "CHN";
+      var colors = {};
+      var GDPSpeed = {
+        520000: 10, //贵州
+        540000: 10, //西藏
+        530000: 8.5, //云南
+        500000: 8.5, //重庆
+        360000: 8.5, //江西
+        340000: 8.0, //安徽
+        510000: 7.5, //四川
+        350000: 8.5, //福建
+        430000: 8.0, //湖南
+        420000: 7.5, //湖北
+        410000: 7.5, //河南
+        330000: 7.0, //浙江
+        640000: 7.5, //宁夏
+        650000: 7.0, //新疆
+        440000: 7.0, //广东
+        370000: 7.0, //山东
+        450000: 7.3, //广西
+        630000: 7.0, //青海
+        320000: 7.0, //江苏
+        140000: 6.5, //山西
+        460000: 7, // 海南
+        310000: 6.5, //上海
+        110000: 6.5, // 北京
+        130000: 6.5, // 河北
+        230000: 6, // 黑龙江
+        220000: 6, // 吉林
+        210000: 6.5, //辽宁
+        150000: 6.5, //内蒙古
+        120000: 5, // 天津
+        620000: 6, // 甘肃
+        610000: 8.5, // 甘肃
+        710000: 2.64, //台湾
+        810000: 3.0, //香港
+        820000: 4.7, //澳门
+      };
+      var getColorByDGP = function (adcode) {
+        if (!colors[adcode]) {
+          var gdp = GDPSpeed[adcode];
+          if (!gdp) {
+            colors[adcode] = "rgb(227,227,227)";
+          } else {
+            var r = 3;
+            var g = 140;
+            var b = 230;
+            var a = gdp / 10;
+            colors[adcode] = "rgba(" + r + "," + g + "," + b + "," + a + ")";
+          }
+        }
+        return colors[adcode];
+      };
+
+      var disCountry = new AMap.DistrictLayer.Country({
+        zIndex: 10,
+        SOC: "CHN",
+        depth: 1,
+        styles: {
+          "nation-stroke": "#ff0000",
+          "coastline-stroke": "#0088ff",
+          "province-stroke": "grey",
+          fill: function (props) {
+            return getColorByDGP(props.adcode_pro);
+          },
+        },
+      });
+
+      var map = new AMap.Map("container", {
+        zooms: [4, 8],
+        center: [106.122082, 33.719192],
+        zoom: 4,
+        isHotspot: false,
+        defaultCursor: "pointer",
+        layers: [disCountry],
+        viewMode: "3D",
+      });
+      map.addControl(new AMap.Scale());
+      map.addControl(new AMap.ToolBar({ liteStyle: true }));
+      map.on("complete", function () {
+        var layer = new AMap.LabelsLayer({
+          // 开启标注避让，默认为开启，v1.4.15 新增属性
+          collision: false,
+          // 开启标注淡入动画，默认为开启，v1.4.15 新增属性
+          animation: true,
+        });
+        for (var i = 0; i < LabelsData.length; i++) {
+          var labelsMarker = new AMap.LabelMarker(LabelsData[i]);
+          layer.add(labelsMarker);
+        }
+        map.add(layer);
+      });
+
+      document.getElementsByClassName("amap-mcode")[0].innerHTML =
+        "-GS(2021)648号";
+    </script>
+    <style type="text/css">
+      html,
+      body,
+      .map {
+        width: 100%;
+        background: white !important;
+        height: 100%;
+        margin: 0px;
+      }
+      #myditu{
+        margin: 30px auto;
+        width: 900px;
+        height: 650px;
+        border: 1px solid white;
+        box-shadow: 0 0 10px rgb(222, 222, 222);
+      }
+    </style>
+  </body>
+</html>
