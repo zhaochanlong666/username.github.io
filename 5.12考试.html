@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.4/jquery.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/echarts/5.4.2/echarts.common.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <style>
+      body {
+        background-color: rgb(244, 250, 255);
+      }
+      .b {
+        margin-left: -1090px;
+      }
+      .div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+      }
+      .box1 {
+        margin-top: 20px;
+        width: 1300px;
+        height: 130px;
+        display: flex;
+        align-items: center;
+        margin-right: -24px;
+        text-align: center;
+      }
+      span {
+        color: rgb(192, 192, 192);
+        font-size: 16px;
+      }
+      .box1 a {
+        width: 153px;
+        height: 130px;
+        background-color: #fff;
+        display: flex;
+        margin-right:40px;
+        margin-left: 40px;
+        flex-direction: column;
+        align-items: center;
+        text-decoration: none;
+        color: black;
+        border-radius: 20%;
+      }
+      .box1 a:hover {
+        margin-top: -10px;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+      }
+      .shuju {
+        margin-top: 10px;
+        text-align: center;
+        font-size: 25px;
+        color: blue;
+        font-weight: bolder;
+      }
+      .shuju1 {
+        margin-top: 10px;
+        text-align: center;
+        font-size: 25px;
+        color: orangered;
+        font-weight: bolder;
+      }
+      .shuju2 {
+        margin-top: 10px;
+        text-align: center;
+        font-size: 25px;
+        color: rgb(19, 195, 19);
+        font-weight: bolder;
+      }
+      .shuju3 {
+        margin-top: 10px;
+        text-align: center;
+        font-size: 25px;
+        color: rgb(101, 209, 205);
+        font-weight: bolder;
+      }
+
+      .box2 {
+        width: 1300px;
+        height: 130px;
+        display: flex;
+        align-items: center;
+        margin-right: -24px;
+        text-align: center;
+      }
+      .left {
+        margin-top: 450px;
+        flex: 15;
+        height: 500px;
+        background-color: rgb(244, 250, 255);
+      }
+      .left button {
+        position: relative;
+        left: 100px;
+        width: 70px;
+        height: 30px;
+        border-radius: 7px;
+        border: none;
+        background-color: white;
+        margin-left:20px;
+      }
+      .left button:hover {
+        color: white;
+        background-color: rgb(88, 127, 233);
+      }
+      .biaoqian{
+        margin-right: 430px;
+        margin-bottom: -30px;
+      }
+      .zhongjian{
+        flex: 1; 
+        padding: 10px;
+      }
+      .right {
+        margin-top: 450px;
+        flex: 15; 
+        height: 500px;
+        background-color: rgb(244, 250, 255);
+      }
+      .biaoqian1{
+        margin-right:480px;
+        margin-bottom: -30px;
+      }
+      .right button {
+        position: relative;
+        left: 100px;
+        width: 70px;
+        height: 30px;
+        border-radius: 7px;
+        border: none;
+        background-color: white;
+        margin-left: 20px;
+      }
+      .right button:hover {
+        color: white;
+        background-color: rgb(88, 127, 233);
+      }
+      #box {
+        width: 100%;
+        height: 380px;
+        margin-top: 80px;
+      }
+
+      .box3{
+        margin-top: 410px;
+        width: 1300px;
+        height: 130px;
+        display: flex;
+        align-items: center;
+        margin-right: -24px;
+        text-align: center;
+        background-color: rgb(244, 250, 255);
+      }
+      .box3 input{
+        position: relative;
+        left: 100px;
+        width: 150px;
+        height: 30px;
+        border-radius: 7px;
+        margin-right: 30px;
+        border:none;
+      }
+      .box3 .biaoqian2{
+        margin-right:480px;
+        margin-left: 30px;
+      }
+      .box3 button{
+        position: relative;
+        left: 70px;
+        width: 120px;
+        height: 30px;
+        border-radius: 7px;
+        border: none;
+        background-color: white;
+        margin-left: 20px;
+      }
+      .box3 button:hover {
+        color: white;
+        background-color: rgb(88, 127, 233);
+      }
+      .box4{
+        width: 1300px;
+        height: 680px;
+        display: flex;
+        align-items: center;
+        margin-right: -24px;
+        text-align: center;
+        background-color: rgb(244, 250, 255);
+      }
+      .box4 .left2 {
+        flex:1;
+        height: 680px;
+        background-color: rgb(244, 250, 255);
+      }
+      .box4 .right2 {
+        flex:1.5;
+        height: 680px;
+        background-color: rgb(244, 250, 255);
+      }
+      .left2{
+        display: flex;
+        flex-wrap: wrap;
+      }
+      .left2 a{
+        width: 180px;
+        height: 150px;
+        background-color: #fff;
+        display: flex;
+        margin: 10px;
+        margin-top: 20px;
+        margin-left: 20px;
+        padding: 20px;
+        flex-direction: column;
+        align-items: center;
+        text-decoration: none;
+        color: black;
+        border-radius: 30px;
+      }
+      .left2 a:hover{
+        margin-top: -1px;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+      }
+      .left2 p{
+        color: black;
+      }
+      .left2 h2{
+        margin-top: -10px;
+      }
+      #box1 {
+        width: 100%;
+        height: 380px;
+        margin-top: 80px;
+      }
+      #box111{
+        width:1200px;
+        height: 500px;
+        margin-top: 900px;
+        margin-left: -500px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="div">
+      <h2 class="b">待办事项</h2>
+      <div class="box1">
+        <a href="#">
+          <h3>待发货订单</h3>
+          <span>单位(笔)</span>
+          <p class="shuju">4</p>
+        </a>
+        <a href="#">
+          <h3>待处理售后</h3>
+          <span>单位(笔)</span>
+          <p class="shuju1">0</p>
+        </a>
+        <a href="#">
+          <h3>待付款订单</h3>
+          <span>单位(笔)</span>
+          <p class="shuju2">113</p>
+        </a>
+        <a href="#">
+          <h3>待补货商品</h3>
+          <span>单位(笔)</span>
+          <p class="shuju">0</p>
+        </a>
+        <a href="#">
+          <h3>待审核会员</h3>
+          <span>单位(笔)</span>
+          <p class="shuju1">0</p>
+        </a>
+        <a href="#">
+          <h3>待审核佣金</h3>
+          <span>单位(笔)</span>
+          <p class="shuju3">948.19</p>
+        </a>
+      </div>
+      <div class="box2">
+        <div class="left">
+            <h2 class="biaoqian">新增会员</h2>
+            <button onclick="btn1()">今天</button>
+            <button onclick="btn2()">昨天</button>
+            <button onclick="btn3()">近7天</button>
+            <button onclick="btn4()">近30天</button>
+            <div id="box"></div>
+        </div>
+        <div class="zhongjian"></div>
+        <div class="right">
+            <h2 class="biaoqian1">新增订单</h2>
+            <button id="option4" class="but">今天</button>
+            <button id="option5" class="but">昨天</button>
+            <button id="option6" class="but">近7日</button>
+            <button id="option7" class="but">近30日</button>
+            <div id="main1"></div>
+        </div>
+      </div>
+      <div class="box3">
+        <h2 class="biaoqian2">运营数据</h2>
+        <input type="date">
+        <input type="date">
+        <button onclick="btn11()">今天</button>
+        <button onclick="btn22()">昨天</button>
+        <button onclick="btn33()">近7天</button>
+        <button onclick="btn44()">近30天</button>
+        <div id="box111"></div>
+      </div>
+      <div class="box4">
+        <div class="left2">
+          <a href="#">
+            <p class="shuju">成交金额(元)</p>
+            <h2>796</h2>
+            <span>较昨日</span>
+          </a>
+          <a href="#">
+            <p class="shuju">退款金额(元)</p>
+            <h2>0</h2>
+            <span>较昨日</span>
+          </a>
+          <a href="#">
+            <p class="shuju">成交金额(元)</p>
+            <h2>4</h2>
+            <span>较昨日</span>
+          </a>
+          <a href="#">
+            <p class="shuju">成交金额(元)</p>
+            <h2>4</h2>
+            <span>较昨日</span>
+          </a>
+          <a href="#">
+            <p class="shuju">成交金额(元)</p>
+            <h2>199</h2>
+            <span>较昨日</span>
+          </a>
+          <a href="#">
+            <p class="shuju">成交金额(元)</p>
+            <h2>199</h2>
+            <span>较昨日</span>
+          </a>
+        </div>
+        <div class="right2">
+          <div id="box1">
+
+          </div>
+        </div>
+      </div>
+      </div>
+    </div>
+    <script>
+      function btn2() {
+      $(".a").html("250");
+      $(".a1").html("0");
+      let chartDom = document.getElementById("box");
+      let myChart = echarts.init(chartDom);
+      let option;
+      option = {
+        tooltip: {},
+        legend: {
+          data: ["PV", "UV"],
+        },
+        xAxis: {
+          type: "category",
+          data: ["00.00", "02.00", "04.00", "06.00", "08.00", "10.00", "12.00"],
+        },
+        yAxis: {
+          type: "value",
+        },
+        series: [
+          {
+            name: "PV",
+            data: [80, 0, 80, 80, 200, 40, 60],
+            type: "line",
+            smooth: true,
+          },
+          {
+            name: "UV",
+            data: [],
+            type: "line",
+            smooth: true,
+          },
+        ],
+      };
+      myChart.setOption(option);
+    }
+    function btn3() {
+      $(".a").html("2170");
+      $(".a1").html("118");
+      var chartDom = document.getElementById("box");
+      var myChart = echarts.init(chartDom);
+      var option;
+      option = {
+        tooltip: {},
+        legend: {
+          data: ["PV", "UV"],
+        },
+        xAxis: {
+          type: "category",
+          data: [
+            "2023-04-30",
+            "2023-05-01",
+            "2023-05-02",
+            "2023-05-03",
+            "2023-05-04",
+            "2023-05-05",
+            "2023-05-06",
+          ],
+        },
+        yAxis: {
+          type: "value",
+        },
+        series: [
+          {
+            name: "PV",
+            data: [60, 0, 0, 60, 600, 40,60],
+            type: "line",
+            smooth: true,
+          },
+          {
+            name: "UV",
+            data: [20, 80, 20, 16, 100, 23, 23],
+            type: "line",
+            smooth: true,
+          },
+        ],
+      };
+      myChart.setOption(option);
+    }
+    function btn4() {
+      $(".a").html("20302");
+      $(".a1").html("1056");
+      var chartDom = document.getElementById("box");
+      var myChart = echarts.init(chartDom);
+      var option;
+      option = {
+        tooltip: {},
+        legend: {
+          data: ["PV", "UV"],
+        },
+        xAxis: {
+          type: "category",
+          data: [
+            "2023-04-07",
+            "2023-04-11",
+            "2023-04-19",
+            "2023-04-23",
+            "2023-04-27",
+            "2023-05-01",
+            "2023-05-05",
+          ],
+        },
+        yAxis: {
+          type: "value",
+          axisLine: { onZero: false },
+          axisLabel: {
+            formatter: "{value} k",
+          },
+          boundaryGap: false,
+          data: ["0", "10"],
+        },
+        series: [
+          {
+            name: "PV",
+            data: [5, 0, 12, 60, 1000, 40, 13],
+            type: "line",
+            smooth: true,
+          },
+          {
+            name: "UV",
+            data: [20, 80, 26, 16, 300, 23, 23],
+            type: "line",
+            smooth: true,
+          },
+        ],
+      };
+      myChart.setOption(option);
+    }
+    function btn1() {
+      $(".a1").html("0");
+      var chartDom = document.getElementById("box");
+      var myChart = echarts.init(chartDom);
+      var option;
+      option = {
+        tooltip: {},
+        legend: {
+          data: ["PV", "UV"],
+        },
+        xAxis: {
+          type: "category",
+          data: ["00.00", "02.00", "04.00", "06.00", "08.00", "10.00", "12.00"],
+        },
+        yAxis: {
+          type: "value",
+        },
+        series: [
+          {
+            name: "PV",
+            data: [5, 80, 12, 60, 0, 40, 13],
+            type: "line",
+            smooth: true,
+          },
+          {
+            name: "UV",
+            data: [],
+            type: "line",
+            smooth: true,
+          },
+        ],
+      };
+      myChart.setOption(option);
+    }
+    var chartDom = document.getElementById("box");
+    var myChart = echarts.init(chartDom);
+    var option;
+    option = {
+      tooltip: {},
+      legend: {
+        data: ["PV", "UV"],
+      },
+      xAxis: {
+        type: "category",
+        data: ["00.00", "02.00", "04.00", "06.00", "08.00", "10.00", "12.00"],
+      },
+      yAxis: {
+        type: "value",
+      },
+      series: [
+        {
+          name: "PV",
+          data: [5, 80, 12, 60, 0, 40, 13],
+          type: "line",
+          smooth: true,
+        },
+        {
+          name: "UV",
+          data: [],
+          type: "line",
+          smooth: true,
+        },
+      ],
+    };
+    myChart.setOption(option);
+    </script>
+    <script>
+        var chartDom1 = document.getElementById("main1");
+      var myChart1 = echarts.init(chartDom1);
+      var obj;
+      var obj1;
+      var obj2;
+      var obj3;
+      obj = {
+        title: {
+          textStyle: {
+            color: "red",
+            fontSize: 30,
+            fontWeight: "bold",
+          },
+          left: "center",
+        },
+        tooltip: {},
+        legend: {
+          data: ["新增订单"],
+          left: 340,
+        },
+        xAxis: {
+          //文字
+          data: [
+            "00:00",
+            "03:00",
+            "06:00",
+            "09:00",
+            "12:00",
+            "15:00",
+            "18:00",
+            "21:00",
+          ],
+        },
+        yAxis: {},
+        series: [
+          {
+            name: "新增订单",
+            type: "bar",
+            data: [0, 0, 2, 0, 3, 1],
+          },
+        ],
+      };
+      obj1 = {
+        title: {
+          textStyle: {
+            color: "red",
+            fontSize: 30,
+            fontWeight: "bold",
+          },
+          left: "center",
+        },
+        tooltip: {},
+        legend: {
+          data: ["新增订单"],
+          left: 340,
+        },
+        xAxis: {
+          //文字
+          data: [
+            "00:00",
+            "03:00",
+            "06:00",
+            "09:00",
+            "12:00",
+            "15:00",
+            "18:00",
+            "21:00",
+          ],
+        },
+        yAxis: {},
+        series: [
+          {
+            name: "新增订单",
+            type: "bar",
+            data: [1, 0, 0, 3, 1],
+          },
+        ],
+      };
+      obj2 = {
+        title: {
+          textStyle: {
+            color: "red",
+            fontSize: 30,
+            fontWeight: "bold",
+          },
+          left: "center",
+        },
+        tooltip: {},
+        legend: {
+          data: ["新增订单"],
+          left: 340,
+        },
+        xAxis: {
+          //文字
+          data: [
+            "00:00",
+            "03:00",
+            "06:00",
+            "09:00",
+            "12:00",
+            "15:00",
+            "18:00",
+            "21:00",
+              ],
+        },
+        yAxis: {},
+        series: [
+          {
+            name: "新增订单",
+            type: "bar",
+            data: [2, 0, 1, 0, 1],
+          },
+        ],
+      };
+      obj3 = {
+        title: {
+          textStyle: {
+            color: "red",
+            fontSize: 30,
+            fontWeight: "bold",
+          },
+          left: "center",
+        },
+        tooltip: {},
+        legend: {
+          data: ["新增订单"],
+          left: 340,
+        },
+        xAxis: {
+          //文字
+          data: [
+            "00:00",
+            "03:00",
+            "06:00",
+            "09:00",
+            "12:00",
+            "15:00",
+            "18:00",
+            "21:00",
+          ],
+        },
+        yAxis: {},
+        series: [
+          {
+            name: "新增订单",
+            type: "bar",
+            data: [0, 0, 0, 3, 0, 2, 1],
+          },
+        ],
+      };
+      myChart1.resize({
+        width: 700,
+        height: 460,
+      });
+      obj && myChart1.setOption(obj);
+      document.getElementById("option4").addEventListener("click", function () {
+        // 当点击 option1 按钮时，更新图表数据为 option1
+        myChart1.setOption(obj);
+      });
+
+      document.getElementById("option5").addEventListener("click", function () {
+        // 当点击 option2 按钮时，更新图表数据为 option2
+        myChart1.setOption(obj1);
+      });
+      document.getElementById("option6").addEventListener("click", function () {
+        // 当点击 option2 按钮时，更新图表数据为 option2
+        myChart1.setOption(obj2);
+      });
+      document.getElementById("option7").addEventListener("click", function () {
+        // 当点击 option2 按钮时，更新图表数据为 option2
+        myChart1.setOption(obj3);
+      });
+    </script>
+
+     <script>
+        function btn22() {
+      $(".a").html("250");
+      $(".a1").html("0");
+      var chartDom = document.getElementById("box111");
+      var myChart = echarts.init(chartDom);
+      var option;
+      option = {
+        tooltip: {},
+        legend: {
+          data: ["PV", "UV"],
+        },
+        xAxis: {
+          type: "category",
+          data: ["00.00", "02.00", "04.00", "06.00", "08.00", "10.00", "12.00"],
+        },
+        yAxis: {
+          type: "value",
+        },
+        series: [
+          {
+            name: "PV",
+            data: [80, 0, 80, 80, 200, 40, 60],
+            type: "line",
+            smooth: true,
+          },
+          {
+            name: "UV",
+            data: [],
+            type: "line",
+            smooth: true,
+          },
+        ],
+      };
+      myChart.setOption(option);
+    }
+    function btn33() {
+      $(".a").html("2170");
+      $(".a1").html("118");
+      let chartDom = document.getElementById("box111");
+      let myChart = echarts.init(chartDom);
+      let option;
+      option = {
+        tooltip: {},
+        legend: {
+          data: ["PV", "UV"],
+        },
+        xAxis: {
+          type: "category",
+          data: [
+            "2023-04-30",
+            "2023-05-01",
+            "2023-05-02",
+            "2023-05-03",
+            "2023-05-04",
+            "2023-05-05",
+            "2023-05-06",
+          ],
+        },
+        yAxis: {
+          type: "value",
+        },
+        series: [
+          {
+            name: "PV",
+            data: [60, 0, 0, 60, 600, 40,60],
+            type: "line",
+            smooth: true,
+          },
+          {
+            name: "UV",
+            data: [20, 80, 20, 16, 100, 23, 23],
+            type: "line",
+            smooth: true,
+          },
+        ],
+      };
+      myChart.setOption(option);
+    }
+    function btn44() {
+      $(".a").html("20302");
+      $(".a1").html("1056");
+      var chartDom = document.getElementById("box111");
+      var myChart = echarts.init(chartDom);
+      var option;
+      option = {
+        tooltip: {},
+        legend: {
+          data: ["PV", "UV"],
+        },
+        xAxis: {
+          type: "category",
+          data: [
+            "2023-04-07",
+            "2023-04-11",
+            "2023-04-19",
+            "2023-04-23",
+            "2023-04-27",
+            "2023-05-01",
+            "2023-05-05",
+          ],
+        },
+        yAxis: {
+          type: "value",
+          axisLine: { onZero: false },
+          axisLabel: {
+            formatter: "{value} k",
+          },
+          boundaryGap: false,
+          data: ["0", "10"],
+        },
+        series: [
+          {
+            name: "PV",
+            data: [5, 0, 12, 60, 1000, 40, 13],
+            type: "line",
+            smooth: true,
+          },
+          {
+            name: "UV",
+            data: [20, 80, 26, 16, 300, 23, 23],
+            type: "line",
+            smooth: true,
+          },
+        ],
+      };
+      myChart.setOption(option);
+    }
+    function btn11() {
+      $(".a1").html("0");
+      var chartDom = document.getElementById("box111");
+      var myChart = echarts.init(chartDom);
+      var option;
+      option = {
+        tooltip: {},
+        legend: {
+          data: ["PV", "UV"],
+        },
+        xAxis: {
+          type: "category",
+          data: ["00.00", "02.00", "04.00", "06.00", "08.00", "10.00", "12.00"],
+        },
+        yAxis: {
+          type: "value",
+        },
+        series: [
+          {
+            name: "PV",
+            data: [5, 80, 12, 60, 0, 40, 13],
+            type: "line",
+            smooth: true,
+          },
+          {
+            name: "UV",
+            data: [],
+            type: "line",
+            smooth: true,
+          },
+        ],
+      };
+      myChart.setOption(option);
+    }
+    var chartDom = document.getElementById("box111");
+    var myChart = echarts.init(chartDom);
+    var option;
+    option = {
+      tooltip: {},
+      legend: {
+        data: ["PV", "UV"],
+      },
+      xAxis: {
+        type: "category",
+        data: ["00.00", "02.00", "04.00", "06.00", "08.00", "10.00", "12.00"],
+      },
+      yAxis: {
+        type: "value",
+      },
+      series: [
+        {
+          name: "PV",
+          data: [5, 80, 12, 60, 0, 40, 13],
+          type: "line",
+          smooth: true,
+        },
+        {
+          name: "UV",
+          data: [],
+          type: "line",
+          smooth: true,
+        },
+      ],
+    };
+    myChart.setOption(option);
+      
+     </script>
+  </body>
+</html>
